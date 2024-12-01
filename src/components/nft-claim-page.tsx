@@ -88,7 +88,7 @@ export function NftClaimPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="order-2 md:order-1">
               <h2 className="text-3xl font-bold mb-4">About the Creator</h2>
-              <p>Our artist, Jane Doe, is a renowned digital creator known for her innovative approach to NFT art. With over a decade of experience in digital media, Jane's work has been featured in major online galleries and digital art exhibitions.</p>
+              <p>Our artist, Jane Doe, is a renowned digital creator known for her innovative approach to NFT art. With over a decade of experience in digital media, Jane&apos;s work has been featured in major online galleries and digital art exhibitions.</p>
             </div>
             <Image
               src="/placeholder.svg?height=300&width=300"
