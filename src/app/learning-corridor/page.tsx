@@ -1,21 +1,35 @@
 'use client'
 
+import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Book, Users, Trophy, LineChart } from 'lucide-react'
 import Link from 'next/link'
 
-export default function LearningCorridorDashboard() {
-  // Example metrics - these would later come from your backend
+function LearningCorridorPage() {
   const metrics = {
     activeStudents: 156,
-    completedProjects: 23,
-    sdgImpacts: {
-      education: 78,
-      health: 45,
-      marine: 34
+    completedProjects: 45,
+    regions: {
+      colombo: 45,
+      galle: 35,
+      matara: 40,
+      hambantota: 36
     },
-    fundingProgress: 125000
+    sdgInitiatives: {
+      education: 23,
+      marineLife: 15,
+      health: 7
+    },
+    fundingProgress: {
+      current: 125000,
+      target: 500000,
+      projects: {
+        coastal: 45000,
+        education: 50000,
+        health: 30000
+      }
+    }
   }
 
   return (
@@ -23,14 +37,11 @@ export default function LearningCorridorDashboard() {
       <header className="border-b">
         <div className="container mx-auto px-4 py-4">
           <h1 className="text-3xl font-bold">Learning Corridor Dashboard</h1>
-          <p className="text-muted-foreground mt-2">
-            Empowering Youth Through Self-Directed Learning
-          </p>
+          <p className="text-muted-foreground mt-2">Youth Empowerment Through Self-Directed Learning</p>
         </div>
       </header>
 
-      {/* Key Metrics */}
-      <section className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card>
             <CardHeader>
@@ -64,9 +75,7 @@ export default function LearningCorridorDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold">
-                {Object.values(metrics.sdgImpacts).reduce((a, b) => a + b, 0)}
-              </p>
+              <p className="text-3xl font-bold">{Object.values(metrics.sdgInitiatives).reduce((a, b) => a + b, 0)}</p>
             </CardContent>
           </Card>
 
@@ -78,20 +87,21 @@ export default function LearningCorridorDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold">${metrics.fundingProgress.toLocaleString()}</p>
+              <p className="text-3xl font-bold">${metrics.fundingProgress.current.toLocaleString()}</p>
             </CardContent>
           </Card>
         </div>
-      </section>
 
-      {/* Link to Impact Dashboard */}
-      <section className="container mx-auto px-4 py-8">
-        <Button asChild>
-          <Link href="/impact-dashboard">
-            View Detailed Impact Metrics →
-          </Link>
-        </Button>
-      </section>
+        <div className="mt-8">
+          <Button asChild>
+            <Link href="/impact-dashboard">
+              View Detailed Impact Metrics →
+            </Link>
+          </Button>
+        </div>
+      </main>
     </div>
   )
 }
+
+export default LearningCorridorPage
